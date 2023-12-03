@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch;
 
+import br.com.alura.screenmatch.model.DadosEpisodio;
 import br.com.alura.screenmatch.model.DadosSerie;
 import br.com.alura.screenmatch.service.ConsumoAPI;
 import br.com.alura.screenmatch.service.ConverteDados;
@@ -22,5 +23,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDados(json,DadosSerie.class);
 		System.out.println(dados);
+		json = consumoAPI.obterDados("http://www.omdbapi.com/?t=gilmore+girls&Season=1&Episode=2&apikey=2e6ea4f4");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json,DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
